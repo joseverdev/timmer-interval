@@ -14,9 +14,16 @@
           <p class="title">SETS</p>
           <div>
             <div class="container">
-              <button class="container__button">-</button>
-              <input type="number" class="container__input" value="4" />
-              <button class="container__button">+</button>
+              <button id="set-decrement" class="container__button">-</button>
+              <input
+                id="sets"
+                type="number"
+                class="container__input"
+                value="4"
+                min="1"
+                max="99"
+              />
+              <button id="set-increment" class="container__button">+</button>
             </div>
           </div>
         </section>
@@ -24,12 +31,26 @@
           <p class="title">WORK</p>
           <div>
             <div class="container">
-              <button class="container__button">-</button>
+              <button id="work-decrement" class="container__button">-</button>
               <div class="two-inputs">
-                <input type="number" class="container__input" value="01" />
-                <input type="number" class="container__input" value="00" />
+                <input
+                  id="work-minutes-input"
+                  type="number"
+                  class="minutes container__input"
+                  value="01"
+                  min="0"
+                  max="99"
+                />
+                <input
+                  id="work-input"
+                  type="number"
+                  class="seconds container__input"
+                  value="00"
+                  min="0"
+                  max="59"
+                />
               </div>
-              <button class="container__button">+</button>
+              <button id="work-increment" class="container__button">+</button>
             </div>
           </div>
         </section>
@@ -37,18 +58,29 @@
           <p class="title">REST</p>
           <div>
             <div class="container">
-              <button class="container__button">-</button>
+              <button id="rest-decrement" class="container__button">-</button>
               <div class="two-inputs">
-                <input type="number" class="container__input" value="01" />
-                <input type="number" class="container__input" value="00" />
+                <input
+                  id="rest-minutes-input"
+                  type="number"
+                  class="container__input"
+                  value="01"
+                />
+                <input
+                  id="rest-seconds-input"
+                  type="number"
+                  class="container__input"
+                  value="00"
+                />
               </div>
-              <button class="container__button">+</button>
+              <button id="rest-increment" class="container__button">+</button>
             </div>
           </div>
         </section>
         <button class="start-btn">START</button>
       </div>
     </main>
+    <script type="module" src="/src/domElements.ts"></script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
