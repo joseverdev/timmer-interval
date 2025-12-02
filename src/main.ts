@@ -54,4 +54,8 @@ document.addEventListener("click", (event) => {
   if (target.matches("#work-decrement")) {
     decrementTime($worksSecondsInput, $workMinutesInput);
   }
+
+  if (target.matches(".start-btn")) {
+    console.log("Start button clicked");
+  }
 });

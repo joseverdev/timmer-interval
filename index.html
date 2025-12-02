@@ -10,74 +10,109 @@
   <body>
     <main>
       <div id="app">
-        <section class="section">
-          <p class="title">SETS</p>
-          <div>
-            <div class="container">
-              <button id="set-decrement" class="container__button">-</button>
-              <input
-                id="sets"
-                type="number"
-                class="container__input"
-                value="4"
-                min="1"
-                max="99"
-              />
-              <button id="set-increment" class="container__button">+</button>
-            </div>
-          </div>
-        </section>
-        <section class="section">
-          <p class="title">WORK</p>
-          <div>
-            <div class="container">
-              <button id="work-decrement" class="container__button">-</button>
-              <div class="two-inputs">
+        <div class="config">
+          <section class="section">
+            <p class="title">SETS</p>
+            <div>
+              <div class="container">
+                <button id="set-decrement" class="container__button">-</button>
                 <input
-                  id="work-minutes-input"
+                  id="sets"
                   type="number"
-                  class="minutes container__input"
-                  value="01"
-                  min="0"
+                  class="container__input"
+                  value="4"
+                  min="1"
                   max="99"
                 />
-                <input
-                  id="work-input"
-                  type="number"
-                  class="seconds container__input"
-                  value="00"
-                  min="0"
-                  max="59"
-                />
+                <button id="set-increment" class="container__button">+</button>
               </div>
-              <button id="work-increment" class="container__button">+</button>
             </div>
-          </div>
-        </section>
-        <section class="section">
-          <p class="title">REST</p>
-          <div>
-            <div class="container">
-              <button id="rest-decrement" class="container__button">-</button>
-              <div class="two-inputs">
-                <input
-                  id="rest-minutes-input"
-                  type="number"
-                  class="container__input"
-                  value="01"
-                />
-                <input
-                  id="rest-seconds-input"
-                  type="number"
-                  class="container__input"
-                  value="00"
-                />
+          </section>
+          <section class="section">
+            <p class="title">WORK</p>
+            <div>
+              <div class="container">
+                <button id="work-decrement" class="container__button">-</button>
+                <div class="two-inputs">
+                  <input
+                    id="work-minutes-input"
+                    type="number"
+                    class="minutes container__input"
+                    value="01"
+                    min="0"
+                    max="99"
+                  />
+                  <input
+                    id="work-input"
+                    type="number"
+                    class="seconds container__input"
+                    value="00"
+                    min="0"
+                    max="59"
+                  />
+                </div>
+                <button id="work-increment" class="container__button">+</button>
               </div>
-              <button id="rest-increment" class="container__button">+</button>
             </div>
-          </div>
-        </section>
-        <button class="start-btn">START</button>
+          </section>
+          <section class="section">
+            <p class="title">REST</p>
+            <div>
+              <div class="container">
+                <button id="rest-decrement" class="container__button">-</button>
+                <div class="two-inputs">
+                  <input
+                    id="rest-minutes-input"
+                    type="number"
+                    class="container__input"
+                    value="01"
+                  />
+                  <input
+                    id="rest-seconds-input"
+                    type="number"
+                    class="container__input"
+                    value="00"
+                  />
+                </div>
+                <button id="rest-increment" class="container__button">+</button>
+              </div>
+            </div>
+          </section>
+          <button class="start-btn">START</button>
+        </div>
+        <div class="count">
+          <section class="count__section">
+            <p class="count__sets">4</p>
+            <p class="count__timer">01:00</p>
+            <p class="count__title">WORK</p>
+          </section>
+          <section class="count__buttons">
+            <button id="exit" class="count__btn">Hold to<br />Exit</button>
+            <button id="pause-btn" class="count__btn">
+              <svg
+                class="hidden"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"
+                width="42"
+                height="42"
+              >
+                <path
+                  d="M187.2 100.9C174.8 94.1 159.8 94.4 147.6 101.6C135.4 108.8 128 121.9 128 136L128 504C128 518.1 135.5 531.2 147.6 538.4C159.7 545.6 174.8 545.9 187.2 539.1L523.2 355.1C536 348.1 544 334.6 544 320C544 305.4 536 291.9 523.2 284.9L187.2 100.9z"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 640 640"
+                width="42"
+                height="42"
+              >
+                <path
+                  d="M176 96C149.5 96 128 117.5 128 144L128 496C128 522.5 149.5 544 176 544L240 544C266.5 544 288 522.5 288 496L288 144C288 117.5 266.5 96 240 96L176 96zM400 96C373.5 96 352 117.5 352 144L352 496C352 522.5 373.5 544 400 544L464 544C490.5 544 512 522.5 512 496L512 144C512 117.5 490.5 96 464 96L400 96z"
+                />
+              </svg>
+            </button>
+          </section>
+        </div>
       </div>
     </main>
     <script type="module" src="/src/domElements.ts"></script>
