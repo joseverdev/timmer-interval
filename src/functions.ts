@@ -1,4 +1,5 @@
 function formatInputValue(value: string, maxLength: number): string {
+  console.log("Formatting input value:", value);
   const raw = value.trim();
   if (raw === "") {
     return "00";
@@ -37,11 +38,11 @@ export function limitCounter(
   input.addEventListener("blur", () => {
     let value = Number(input.value);
     if (isNaN(value) || value < min) {
-      input.value = String(min);
+      input.value = formatInputValue(String(min), 2);
     } else if (value > max) {
-      input.value = String(max);
+      input.value = formatInputValue(String(max), 2);
     } else {
-      input.value = String(value);
+      input.value = formatInputValue(String(value), 2);
     }
   });
 }
