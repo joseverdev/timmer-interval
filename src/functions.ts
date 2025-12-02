@@ -2,6 +2,8 @@ export function limitInputlength(input: HTMLInputElement, maxLength: number) {
   input.addEventListener("input", () => {
     if (input.value.length > maxLength) {
       input.value = input.value.slice(0, maxLength);
+    } else if (input.value.length === 1) {
+      input.value = input.value.padStart(2, "0");
     }
   });
 }
