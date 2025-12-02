@@ -1,4 +1,9 @@
-import { decrementTime, incrementTime, limitInputlength } from "./functions";
+import {
+  decrementTime,
+  incrementTime,
+  limitCounter,
+  limitInputlength,
+} from "./functions";
 import { DOMElements } from "./domElements";
 
 const {
@@ -25,6 +30,11 @@ $setsInput.addEventListener("input", () => {
 
 limitInputlength($workMinutesInput, 2);
 limitInputlength($restMinutesInput, 2);
+limitInputlength($worksSecondsInput, 2);
+limitInputlength($restSecondsInput, 2);
+
+limitCounter($worksSecondsInput, 0, 59);
+limitCounter($restSecondsInput, 0, 59);
 
 document.addEventListener("click", (event) => {
   const target = event.target as HTMLElement;

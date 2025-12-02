@@ -105,10 +105,6 @@ main {
   cursor: pointer;
 }
 
-.config {
-  display: none;
-}
-
 .count {
   display: flex;
   flex-direction: column;
