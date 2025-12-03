@@ -38,7 +38,7 @@
                     id="work-minutes-input"
                     type="number"
                     class="minutes container__input"
-                    value="01"
+                    value="00"
                     min="0"
                     max="99"
                   />
@@ -46,7 +46,7 @@
                     id="work-input"
                     type="number"
                     class="seconds container__input"
-                    value="00"
+                    value="3"
                     min="0"
                     max="59"
                   />
@@ -65,26 +65,31 @@
                     id="rest-minutes-input"
                     type="number"
                     class="container__input"
-                    value="01"
+                    value="00"
                   />
                   <input
                     id="rest-seconds-input"
                     type="number"
                     class="container__input"
-                    value="00"
+                    value="5"
                   />
                 </div>
                 <button id="rest-increment" class="container__button">+</button>
               </div>
             </div>
           </section>
-          <button class="start-btn">START</button>
+          <button id="start-btn" class="start-btn">START</button>
         </div>
-        <div class="count hidden">
+        <div class="preparation hidden">
+          <p class="preparation__title">Get Ready!</p>
+          <p id="preparation__timmer" class="preparation__timer">5</p>
+          <p id="preparation__text" class="preparation__text hidden">Go!</p>
+        </div>
+        <div id="count" class="count hidden">
           <section class="count__section">
-            <p class="count__sets">4</p>
-            <p class="count__timer">01:00</p>
-            <p class="count__title">WORK</p>
+            <p id="count__sets" class="count__sets">4</p>
+            <p id="count__timmer" class="count__timer">00:00</p>
+            <p id="count__title" class="count__title">WORK</p>
           </section>
           <section class="count__buttons">
             <button id="exit" class="count__btn">Hold to<br />Exit</button>

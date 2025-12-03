@@ -10,4 +10,18 @@ export const DOMElements = {
   $restSecondsInput: document.getElementById(
     "rest-seconds-input"
   ) as HTMLInputElement,
+  $configDiv: document.querySelector(".config") as HTMLDivElement,
+  $preparationDiv: document.querySelector(".preparation") as HTMLDivElement,
+  $preparationText: document.getElementById(
+    "preparation__text"
+  ) as HTMLParagraphElement,
+  $preparationTimmer: document.getElementById(
+    "preparation__timmer"
+  ) as HTMLParagraphElement,
+  $countDiv: document.getElementById("count") as HTMLDivElement,
+  $countTitle: document.getElementById("count__title") as HTMLParagraphElement,
+  $countTimmer: document.getElementById(
+    "count__timmer"
+  ) as HTMLParagraphElement,
+  $countSets: document.getElementById("count__sets") as HTMLParagraphElement,
 };

@@ -1,5 +1,4 @@
 function formatInputValue(value: string, maxLength: number): string {
-  console.log("Formatting input value:", value);
   const raw = value.trim();
   if (raw === "") {
     return "00";
