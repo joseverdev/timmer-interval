@@ -24,4 +24,5 @@ export const DOMElements = {
     "count__timmer"
   ) as HTMLParagraphElement,
   $countSets: document.getElementById("count__sets") as HTMLParagraphElement,
+  $exitBtn: document.getElementById("exit") as HTMLButtonElement,
 };

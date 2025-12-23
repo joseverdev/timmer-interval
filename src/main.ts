@@ -20,7 +20,14 @@ const {
   $countTitle,
   $countTimmer,
   $countSets,
+  $exitBtn,
 } = DOMElements;
+
+let currentInterval: number | null = null;
+let isPaused = false;
+let remainingTime = 0;
+let currentLabel = "";
+let currentCallback: (() => void) | null = null;
 
 $setsInput.addEventListener("keydown", (e) => {
   const invalidChars = ["e", "E", "+", "-", "."];
@@ -90,6 +97,7 @@ document.addEventListener("click", (event) => {
     $configDiv.classList.add("hidden");
     $preparationDiv.classList.remove("hidden");
 
+    //time of preparation
     let count = 5;
     const regresiveCount = setInterval(() => {
       if (count > 1) {
@@ -138,10 +146,53 @@ document.addEventListener("click", (event) => {
       "svg"
     ) as NodeListOf<SVGElement>;
 
+    isPaused = !isPaused;
+
     playIcon.classList.toggle("hidden");
     pauseIcon.classList.toggle("hidden");
+
+    if (isPaused) {
+      $countDiv.style.opacity = "0.6";
+    } else {
+      $countDiv.style.opacity = "1";
+    }
   }
 });
+
+let holdTimeout: number | null = null;
+let isHolding = false;
+
+$exitBtn.addEventListener("mousedown", () => {
+  isHolding = true;
+  $exitBtn.classList.add("is-active");
+
+  holdTimeout = setTimeout(() => {
+    if (isHolding) {
+      $exitBtn.classList.remove("is-active");
+
+      if (currentInterval) {
+        clearInterval(currentInterval);
+      }
+      isPaused = false;
+      remainingTime = 0;
+      currentLabel = "";
+      currentCallback = null;
+
+      $countDiv.classList.add("hidden");
+      $configDiv.classList.remove("hidden");
+      document.body.classList.remove("state-work", "state-rest");
+    }
+  }, 2000);
+});
+
+function cancelHold() {
+  isHolding = false;
+  $exitBtn.classList.remove("is-active");
+  clearTimeout(holdTimeout!);
+}
+
+$exitBtn.addEventListener("mouseup", cancelHold);
+$exitBtn.addEventListener("mouseleave", cancelHold);
 
 function formatTime(totalSeconds: number): string {
   const minutes = Math.floor(totalSeconds / 60);
@@ -159,7 +210,12 @@ function startCountdown(
   label: string,
   callback: () => void
 ) {
-  let totalSeconds = minutes * 60 + seconds;
+  remainingTime = minutes * 60 + seconds;
+  currentLabel = label;
+  currentCallback = callback;
+  isPaused = false;
+
+  // let totalSeconds = minutes * 60 + seconds;
 
   $countTitle.textContent = label.toUpperCase();
 
@@ -170,16 +226,39 @@ function startCountdown(
     document.body.classList.add("state-rest");
   }
 
-  const interval = setInterval(() => {
-    if (totalSeconds > 0) {
-      console.log(`${label} Time: ${formatTime(totalSeconds)}`);
-      $countTimmer.textContent = formatTime(totalSeconds);
+  // const interval = setInterval(() => {
+  //   if (totalSeconds > 0) {
+  //     console.log(`${label} Time: ${formatTime(totalSeconds)}`);
+  //     $countTimmer.textContent = formatTime(totalSeconds);
 
-      totalSeconds--;
+  //     totalSeconds--;
+  //   } else {
+  //     $countTimmer.textContent = formatTime(0);
+  //     clearInterval(interval);
+  //     callback();
+  //   }
+  // }, 1000);
+  runCountdown();
+}
+
+function runCountdown() {
+  if (currentInterval) {
+    clearInterval(currentInterval);
+  }
+
+  currentInterval = setInterval(() => {
+    if (isPaused) return;
+
+    if (remainingTime > 0) {
+      console.log(`${currentLabel} Time: ${formatTime(remainingTime)}`);
+      $countTimmer.textContent = formatTime(remainingTime);
+      remainingTime--;
     } else {
       $countTimmer.textContent = formatTime(0);
-      clearInterval(interval);
-      callback();
+      clearInterval(currentInterval!);
+      if (currentCallback) {
+        currentCallback();
+      }
     }
   }, 1000);
 }

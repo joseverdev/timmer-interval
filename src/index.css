@@ -10,6 +10,7 @@
   --bg-color: rgb(37, 37, 37);
   --text-color: #dfdfdf;
   --button-hover-bg-color: rgb(60, 60, 60);
+  --btn-bg: #a59e9e;
 }
 
 html {
@@ -183,4 +184,33 @@ main {
 
 .hidden {
   display: none;
+}
+
+/*hold button*/
+.count__exit-btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.1s;
+}
+.count__exit-btn:active {
+  transform: scale(0.98);
+}
+.count__exit-text {
+  position: relative;
+  z-index: 100;
+  pointer-events: none;
+}
+.count__exit-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: var(--btn-bg);
+  z-index: 50;
+  transition: width 2s linear;
+}
+
+.count__exit-btn.is-active .count__exit-fill {
+  width: 100%;
 }

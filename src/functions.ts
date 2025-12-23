@@ -76,6 +76,6 @@ export function decrementTime(
       secondsInput.value = formatInputValue(String(seconds - 1), 2);
     }
   } else if (seconds > 0) {
-    secondsInput.value = String(seconds - 1);
+    secondsInput.value = String(seconds - 1).padStart(2, "0");
   }
 }

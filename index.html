@@ -46,7 +46,7 @@
                     id="work-input"
                     type="number"
                     class="seconds container__input"
-                    value="3"
+                    value="03"
                     min="0"
                     max="59"
                   />
@@ -71,7 +71,7 @@
                     id="rest-seconds-input"
                     type="number"
                     class="container__input"
-                    value="5"
+                    value="05"
                   />
                 </div>
                 <button id="rest-increment" class="container__button">+</button>
@@ -92,7 +92,10 @@
             <p id="count__title" class="count__title">WORK</p>
           </section>
           <section class="count__buttons">
-            <button id="exit" class="count__btn">Hold to<br />Exit</button>
+            <button id="exit" class="count__btn count__exit-btn">
+              <span class="count__exit-text">Hold to<br />Exit</span>
+              <div class="count__exit-fill"></div>
+            </button>
             <button id="pause-btn" class="count__btn">
               <svg
                 class="hidden"
