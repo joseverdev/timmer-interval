@@ -1,3 +1,6 @@
+import { AudioManager } from "./audioManager";
+const audio = new AudioManager();
+
 import {
   decrementTime,
   incrementTime,
@@ -81,6 +84,9 @@ document.addEventListener("click", (event) => {
   }
 
   if (target.matches("#start-btn")) {
+    let count = 5;
+
+    audio.play("beep");
     const workMinutes = Number($workMinutesInput.value);
     const workSeconds = Number($worksSecondsInput.value);
     const restMinutes = Number($restMinutesInput.value);
@@ -97,14 +103,18 @@ document.addEventListener("click", (event) => {
     $configDiv.classList.add("hidden");
     $preparationDiv.classList.remove("hidden");
 
-    //time of preparation
-    let count = 5;
+    $preparationTimmer.classList.remove("hidden");
+    $preparationTimmer.textContent = String(count);
+    $preparationText.classList.add("hidden");
+
     const regresiveCount = setInterval(() => {
       if (count > 1) {
+        audio.play("beep");
         console.log("Count:", count - 1);
         $preparationTimmer.textContent = String(count - 1);
         count--;
       } else {
+        audio.play("shoot");
         console.log("Go!");
         $preparationTimmer.classList.add("hidden");
         $preparationText.classList.remove("hidden");
@@ -123,15 +133,21 @@ document.addEventListener("click", (event) => {
 
       if (currentSet > sets) {
         console.log("TIMER COMPLETADO");
+        audio.play("bell");
         return;
       }
+
       console.log(`Starting set ${currentSet} of ${sets}`);
       $countSets.textContent = `${sets - currentSet + 1}`;
       //work
       startCountdown(workMinutes, workSeconds, "Work", () => {
         console.log("REST");
+        audio.play("interval");
+
         //rest
         startCountdown(restMinutes, restSeconds, "Rest", () => {
+          audio.play("interval");
+
           console.log(`Set ${currentSet} completed`);
           currentSet++;
           runSet();
