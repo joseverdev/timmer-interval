@@ -5,8 +5,8 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>timmer-interval</title>
-    <script type="module" crossorigin src="/timmer-interval/assets/index-C4z4L5KZ.js"></script>
-    <link rel="stylesheet" crossorigin href="/timmer-interval/assets/index-B7FO3dCH.css">
+    <script type="module" crossorigin src="/timmer-interval/assets/index-BfPiJ6L8.js"></script>
+    <link rel="stylesheet" crossorigin href="/timmer-interval/assets/index-DdYpAvLX.css">
   </head>
   <body>
     <main>
@@ -21,7 +21,7 @@
                   id="sets"
                   type="number"
                   class="container__input"
-                  value="4"
+                  value="1"
                   min="1"
                   max="99"
                 />
@@ -47,7 +47,7 @@
                     id="work-input"
                     type="number"
                     class="seconds container__input"
-                    value="03"
+                    value="01"
                     min="0"
                     max="59"
                   />
@@ -72,7 +72,7 @@
                     id="rest-seconds-input"
                     type="number"
                     class="container__input"
-                    value="05"
+                    value="01"
                   />
                 </div>
                 <button id="rest-increment" class="container__button">+</button>
@@ -97,6 +97,10 @@
               <span class="count__exit-text">Hold to<br />Exit</span>
               <div class="count__exit-fill"></div>
             </button>
+            <button id="back" class="count__btn count__exit-btn hidden">
+              Exit
+            </button>
+
             <button id="pause-btn" class="count__btn">
               <svg
                 class="hidden"
