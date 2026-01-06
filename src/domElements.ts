@@ -25,4 +25,5 @@ export const DOMElements = {
   ) as HTMLParagraphElement,
   $countSets: document.getElementById("count__sets") as HTMLParagraphElement,
   $exitBtn: document.getElementById("exit") as HTMLButtonElement,
+  $backBtn: document.getElementById("back") as HTMLButtonElement,
 };

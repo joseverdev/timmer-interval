@@ -191,6 +191,8 @@ main {
   position: relative;
   overflow: hidden;
   transition: transform 0.1s;
+  font-size: 1rem;
+  font-weight: 500;
 }
 .count__exit-btn:active {
   transform: scale(0.98);

@@ -24,6 +24,7 @@ const {
   $countTimmer,
   $countSets,
   $exitBtn,
+  $backBtn,
 } = DOMElements;
 
 let currentInterval: number | null = null;
@@ -133,7 +134,10 @@ document.addEventListener("click", (event) => {
 
       if (currentSet > sets) {
         console.log("TIMER COMPLETADO");
+        $backBtn.classList.toggle("hidden");
+        $exitBtn.classList.toggle("hidden");
         audio.play("bell");
+
         return;
       }
 
@@ -172,6 +176,24 @@ document.addEventListener("click", (event) => {
     } else {
       $countDiv.style.opacity = "1";
     }
+  }
+  if (target.matches("#back")) {
+    console.log("BACK to the future");
+
+    if (currentInterval) {
+      clearInterval(currentInterval);
+    }
+    isPaused = false;
+    remainingTime = 0;
+    currentLabel = "";
+    currentCallback = null;
+
+    $countDiv.classList.add("hidden");
+    $configDiv.classList.remove("hidden");
+    document.body.classList.remove("state-work", "state-rest");
+
+    $backBtn.classList.toggle("hidden");
+    $exitBtn.classList.toggle("hidden");
   }
 });
 
